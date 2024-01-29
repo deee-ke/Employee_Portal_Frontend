@@ -1,0 +1,18 @@
+
+html,body {
+    height: 100%;
+}
+
+.trash-btn i{
+    color:black;
+}
+.trash-btn i:hover{
+    color: red;
+}
+
+.edit-btn i{
+    color: black;
+}
+.edit-btn i:hover{
+    color: orangered;
+}

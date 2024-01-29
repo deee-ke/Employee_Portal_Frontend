@@ -1,0 +1,9 @@
+<nav class="navbar p-3 bg-dark">
+    <div class="container-fluid">
+            <a class="navbar-brand text-light d-flex align-items-center gap-3" href="#">
+                <i class="fa-solid fa-user-tie fs-1"></i>
+                <h1 class="m-0"><span class="fw-bold">Employee</span>-Portal</h1>
+            </a>
+            <button class="btn btn-light fw-semibold" (click)="logout()" *ngIf="logged">Log out<i class="ms-2 fa-solid fa-plug"></i></button>
+    </div>
+</nav>

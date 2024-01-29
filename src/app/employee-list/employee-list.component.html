@@ -1,0 +1,55 @@
+<div class="d-flex">
+    <div class="sidebar bg-dark text-light pt-5 px-5 flex-column d-flex gap-3" style="height:90vh; width:19%;">
+        <a class="text-decoration-none text-light fs-5" routerLink="/dashboard">Home</a>
+        <a class="text-decoration-none text-light fs-5" routerLink="/employees">Users</a>
+    </div>
+    
+    <div class="container">
+        <div class="p-3 mt-3 text-dark align-items-center d-flex">
+            <h2 class="fw-semibold">List of Employees</h2>
+            <button class="ms-auto btn btn-dark rounded" (click)="generatePdf()">Export<i class="fa-solid fa-cloud-arrow-up ms-2"></i></button>
+        </div>
+        <div class="p-3 d-flex gap-2">
+            <input type="text" placeholder="Username" class="form-control w-25" name="search" [(ngModel)]="searchKey">
+            <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sort
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" (click)="sortByName()">Name</a></li>
+                  <li><a class="dropdown-item" (click)="sortById()">Id</a></li>
+                </ul>
+            </div>
+            <a routerLink="/employee/add" class="ms-auto"><button class=" btn btn-dark rounded">Add<i class="fa-solid fa-user-plus ms-2"></i></button></a>
+        </div>
+        <div class="p-3">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>User Id</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of allEmployee | search:searchKey | paginate: {itemsPerPage: 7,currentPage: p}" [hidden]="employee.id==='1'">
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.email}}</td>
+                        <td>{{employee.status=='1'?'Active':'Inactive'}}</td>
+                        <td class="">
+                            <a class="text-decoration-none text-dark edit-btn" routerLink="/employee/edit/{{employee.id}}"><i class="fa-regular fa-pen-to-square me-3 fs-5"></i></a>
+                            <button class="border-0 trash-btn" (click)="removeEmployee(employee.id)"><i class="fa-solid fa-trash fs-5"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls class=" text-center fixed-bottom mb-5 ms-auto"
+            (pageChange)="p=$event">
+            </pagination-controls>
+        </div>
+    </div>
+
+</div>
