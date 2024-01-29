@@ -10,7 +10,7 @@ export class AdminAPIService {
 
   constructor(private http:HttpClient) {}
 
-  serverURL = "https://employee-portal-backend-1nww.onrender"
+  serverURL = "https://employee-portal-backend-1nww.onrender.com"
 
   // create an object for the behaviour subject
   public sharedData = new 
